@@ -15,6 +15,9 @@
         <a class="navbar-brand" href="">Dashboard</a>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'admin:index' %}">Ajustes</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'authenticate:logout' %}">Cerrar sesión</a>
           </li>
         </ul>

@@ -5,4 +5,4 @@ from dashboard.models import Region
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    region = models.ForeignKey(Region, on_delete=models.CASCADE, null=True)
+    region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True)
