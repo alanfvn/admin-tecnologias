@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 
+{% block scripts %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+{% endblock scripts %}
+
 {% block content %}
 <main class="vh-100">
-
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -28,48 +33,107 @@
 
   <!-- content -->
   <div class="container mt-4">
-
-    <div class='d-flex row justify-content-between'>
-
-      <!-- tarjeta de resumen de ventas -->
+    <h1 class="fw-bold">Bienvenido {{ user.get_username }}</h1>
+    <hr class="mb-5"/>
+    <!-- tarjeta de resumen de ventas -->
+    <div class='d-flex row justify-content-between mb-5'>
       <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-header fw-bold">Resumen de ventas</div>
+        <div class="card-header fst-italic">Resumen de ventas</div>
         <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Mes actual: Q.{{ m_totals }}</p>
+          <p class="card-text ">Año actual: Q.{{y_totals}}</p>
         </div>
       </div>
 
       <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header fw-bold">Regiones</div>
+        <div class="card-header fst-italic">Regiones</div>
         <div class="card-body">
-          <p class="card-text">🗺️ Numero de regiones: </p>
-          <p class="card-text ">🌐 Region actual: <strong class='text-uppercase'>{{ user.region }}</strong></p>
+          <p class="card-text">Numero de regiones: <strong>{{regions}}</strong></p>
+          <p class="card-text ">Region actual: <strong class='text-uppercase'>{{ user.region }}</strong></p>
         </div>
       </div>    
 
       <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header fw-bold">Resumen de stock</div>
+        <div class="card-header fst-italic">Resumen de stock</div>
         <div class="card-body">
-          <p class="card-text">🖥️ Productos registrados: <strong> {{ prod_count }}</strong> </p>
-          <p class="card-text">📂 Categorias registradas: <strong> {{ cat_count }}</strong> </p>
+          <p class="card-text">Productos registrados: <strong> {{ prod_count }}</strong> </p>
+          <p class="card-text">Categorias registradas: <strong> {{ cat_count }}</strong> </p>
         </div>
       </div>
 
       <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
-        <div class="card-header fw-bold">Estado de ventas</div>
+        <div class="card-header fst-italic">Estado de ventas</div>
         <div class="card-body">
-          <p class="card-text">✅ Ventas realizadas: <strong> {{ sell_yes }}</strong> </p>
-          <p class="card-text">❌ Ventas pendientes: <strong> {{ sell_no }}</strong> </p>
+          <p class="card-text">Ventas realizadas: <strong> {{ sell_yes }}</strong> </p>
+          <p class="card-text">Ventas pendientes: <strong> {{ sell_no }}</strong> </p>
         </div>
       </div>
     </div>
 
-    <div>
+    <!-- graficas -->
+    <div class="container-fluid">
+      <div class=row>
+        <div id='container'>
+        </div>
+      </div>
     </div>
 
-    <h1 class='text-uppercase'>Hola: {{ user.get_username }}</h1>
   </div>
+
+
+
+  <script type="application/javascript">
+    const monthNames = Array.from({ length: 12 }, (_, month) => {
+      const date = new Date(2000, month);
+      return date.toLocaleString('es-ES', { month: 'short' });
+    });
+
+
+    Highcharts.chart('container', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Resumen de ventas'
+      },
+      xAxis: {
+        categories: monthNames,
+        crosshair: true
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Quetzales'
+        }
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"> <b>Q.{point.y:.1f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+      },
+      plotOptions: {
+        column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+        }
+      },
+      series: [
+        {
+          name: 'Ventas',
+          showInLegend: false,
+          colorByPoint: true,
+          data: {{ sells_month|safe }}
+
+        }
+      ]
+    });
+  </script>
+
 
 </main>
 
 {% endblock %}
+
