@@ -40,10 +40,8 @@ class Dashboard(LoginRequiredMixin, ListView):
 
         # current month sales
         context['m_totals'] = values[datetime.now().month-1]
-
         # total $ per year
         context['y_totals'] = sum(values)
-
         # total $ per month
         context['sells_month'] = values
  

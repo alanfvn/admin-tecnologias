@@ -70,66 +70,105 @@
       </div>
     </div>
 
-    <!-- graficas -->
-    <div class="container-fluid">
+    <!-- grafica de barras -->
+    <div class="container-fluid mt-4">
       <div class=row>
         <div id='container'>
         </div>
       </div>
     </div>
 
+    <!-- contenido -->
+    <div class="mt-5 d-flex justify-content-between gap-5 flex-column flex-md-row">
+      <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Region</th>
+            <th scope="col">Ventas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
 
 
 
   <script type="application/javascript">
-    const monthNames = Array.from({ length: 12 }, (_, month) => {
-      const date = new Date(2000, month);
-      return date.toLocaleString('es-ES', { month: 'short' });
-    });
+  const monthNames = Array.from({ length: 12 }, (_, month) => {
+    const date = new Date(2000, month);
+    return date.toLocaleString('es-ES', { month: 'short' });
+  });
 
 
-    Highcharts.chart('container', {
-      chart: {
-        type: 'column'
-      },
+  Highcharts.chart('container', {
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: 'Resumen de ventas'
+    },
+    xAxis: {
+      categories: monthNames,
+      crosshair: true
+    },
+    yAxis: {
+      min: 0,
       title: {
-        text: 'Resumen de ventas'
-      },
-      xAxis: {
-        categories: monthNames,
-        crosshair: true
-      },
-      yAxis: {
-        min: 0,
-        title: {
-          text: 'Quetzales'
-        }
-      },
-      tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        text: 'Quetzales'
+      }
+    },
+    tooltip: {
+      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
         '<td style="padding:0"> <b>Q.{point.y:.1f}</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-      },
-      plotOptions: {
-        column: {
-          pointPadding: 0.2,
-          borderWidth: 0
-        }
-      },
-      series: [
-        {
-          name: 'Ventas',
-          showInLegend: false,
-          colorByPoint: true,
-          data: {{ sells_month|safe }}
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
+      }
+    },
+    series: [
+      {
+        name: 'Ventas',
+        showInLegend: false,
+        colorByPoint: true,
+        data: {{ sells_month|safe }}
 
-        }
-      ]
-    });
+      }
+    ]
+  });
   </script>
 
 
