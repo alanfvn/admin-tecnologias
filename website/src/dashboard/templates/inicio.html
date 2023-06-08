@@ -27,9 +27,47 @@
   </nav>
 
   <!-- content -->
-  <div class="container h-100 mt-4">
-    <h1>Hola: {{ user.get_username }}</h1>
-    <p>Region: {{ user.region }}</h1>
+  <div class="container mt-4">
+
+    <div class='d-flex row justify-content-between'>
+
+      <!-- tarjeta de resumen de ventas -->
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-header fw-bold">Resumen de ventas</div>
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+
+      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header fw-bold">Regiones</div>
+        <div class="card-body">
+          <p class="card-text">🗺️ Numero de regiones: </p>
+          <p class="card-text ">🌐 Region actual: <strong class='text-uppercase'>{{ user.region }}</strong></p>
+        </div>
+      </div>    
+
+      <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header fw-bold">Resumen de stock</div>
+        <div class="card-body">
+          <p class="card-text">🖥️ Productos registrados: <strong> {{ prod_count }}</strong> </p>
+          <p class="card-text">📂 Categorias registradas: <strong> {{ cat_count }}</strong> </p>
+        </div>
+      </div>
+
+      <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header fw-bold">Estado de ventas</div>
+        <div class="card-body">
+          <p class="card-text">✅ Ventas realizadas: <strong> {{ sell_yes }}</strong> </p>
+          <p class="card-text">❌ Ventas pendientes: <strong> {{ sell_no }}</strong> </p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+    </div>
+
+    <h1 class='text-uppercase'>Hola: {{ user.get_username }}</h1>
   </div>
 
 </main>

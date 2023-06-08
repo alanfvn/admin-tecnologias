@@ -25,6 +25,9 @@ class Producto(models.Model):
         verbose_name_plural = 'Productos'
         ordering = ['id']
 
+    def __str__(self):
+        return self.name
+
 
 # modelo de region
 class Region(models.Model):
