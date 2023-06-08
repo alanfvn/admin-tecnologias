@@ -1,10 +1,9 @@
 from datetime import datetime
 from django.db import models
-from django.conf import settings
 
 # modelo de categoria
 class Categoria(models.Model):
-    nombre = models.TextField(verbose_name="Nombre", unique=True, blank=False)
+    name = models.TextField(verbose_name="Nombre", unique=True, blank=False)
 
     def __str__(self):
         return self.name
@@ -41,8 +40,7 @@ class Region(models.Model):
 
 # modelo de ventas
 class Venta(models.Model):
-    sell_date = models.DateField(default=datetime.now)
-    seller = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    sell_date = models.DateTimeField(default=datetime.now)
     region = models.ForeignKey(Region, on_delete=models.CASCADE, verbose_name='Region', blank=False)
     sell_state = models.BooleanField(verbose_name='Estado de venta', blank=False)
 

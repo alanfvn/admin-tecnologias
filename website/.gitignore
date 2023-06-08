@@ -2,4 +2,4 @@
 *.pyc
 env/
 .env
-/src/theme
+/src/db.sqlite3

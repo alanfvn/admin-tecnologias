@@ -1,5 +1,5 @@
 import fs from 'fs';
-import products from './data/productos.json'
+import products from './data/products.json'
 
 let prod_list:any = []
 for (const [_cat, prods] of Object.entries(products)) {
@@ -52,10 +52,10 @@ for(let i = 1; i <= 1000; i++){
     let obj = {
       "prod": item.nombre,
       "price": item.precio,
-      "cantidad": qty2
+      "qty": qty2
     }
     sells[`${i}`].push(obj)
   }
 }
 
-console.log(sells)
+saveFile("sell_details.json",sells)

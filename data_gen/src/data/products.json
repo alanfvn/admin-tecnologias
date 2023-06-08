@@ -1,0 +1,670 @@
+{
+  "auriculares y microfonos": [
+    {
+      "nombre": "auriculares sony wh-1000xm4",
+      "precio": 2000
+    },
+    {
+      "nombre": "auriculares apple airpods pro",
+      "precio": 2500
+    },
+    {
+      "nombre": "auriculares jbl quantum 800",
+      "precio": 1500
+    },
+    {
+      "nombre": "auriculares steelseries arctis 7",
+      "precio": 1800
+    },
+    {
+      "nombre": "microfono blue yeti",
+      "precio": 1200
+    },
+    {
+      "nombre": "microfono audio-technica at2020",
+      "precio": 800
+    },
+    {
+      "nombre": "auriculares razer kraken",
+      "precio": 1000
+    },
+    {
+      "nombre": "auriculares bose quietcomfort 35 ii",
+      "precio": 2200
+    },
+    {
+      "nombre": "auriculares sennheiser hd 660 s",
+      "precio": 3000
+    },
+    {
+      "nombre": "microfono shure sm58",
+      "precio": 1500
+    }
+  ],
+  "camaras web": [
+    {
+      "nombre": "logitech c920",
+      "precio": 800
+    },
+    {
+      "nombre": "microsoft lifecam hd-3000",
+      "precio": 400
+    },
+    {
+      "nombre": "razer kiyo",
+      "precio": 1000
+    },
+    {
+      "nombre": "logitech streamcam",
+      "precio": 1200
+    },
+    {
+      "nombre": "microsoft lifecam studio",
+      "precio": 1500
+    },
+    {
+      "nombre": "logitech brio ultra hd pro",
+      "precio": 2000
+    },
+    {
+      "nombre": "ausdom aw615",
+      "precio": 500
+    },
+    {
+      "nombre": "genius widecam f100",
+      "precio": 300
+    },
+    {
+      "nombre": "avermedia live streamer cam 313",
+      "precio": 700
+    },
+    {
+      "nombre": "eivotor full hd webcam",
+      "precio": 600
+    }
+  ],
+  "discos duros": [
+    {
+      "nombre": "seagate barracuda 2tb",
+      "precio": 1000
+    },
+    {
+      "nombre": "wd blue 1tb",
+      "precio": 800
+    },
+    {
+      "nombre": "samsung 860 evo 500gb",
+      "precio": 1200
+    },
+    {
+      "nombre": "crucial mx500 1tb",
+      "precio": 900
+    },
+    {
+      "nombre": "toshiba x300 4tb",
+      "precio": 1500
+    },
+    {
+      "nombre": "seagate ironwolf nas 4tb",
+      "precio": 1400
+    },
+    {
+      "nombre": "western digital black sn750 1tb",
+      "precio": 2000
+    },
+    {
+      "nombre": "sandisk ssd plus 240gb",
+      "precio": 500
+    },
+    {
+      "nombre": "adata xpg sx8200 pro 512gb",
+      "precio": 1100
+    },
+    {
+      "nombre": "crucial p1 1tb",
+      "precio": 1000
+    }
+  ],
+  "escaneres": [
+    {
+      "nombre": "epson perfection v600",
+      "precio": 1500
+    },
+    {
+      "nombre": "canon canoscan lide 400",
+      "precio": 800
+    },
+    {
+      "nombre": "fujitsu scansnap ix1500",
+      "precio": 3000
+    },
+    {
+      "nombre": "brother ads-2700w",
+      "precio": 2000
+    },
+    {
+      "nombre": "epson workforce es-500w",
+      "precio": 1800
+    },
+    {
+      "nombre": "hp scanjet pro 2500 f1",
+      "precio": 1200
+    },
+    {
+      "nombre": "plustek opticslim 2610",
+      "precio": 700
+    },
+    {
+      "nombre": "canon imageformula dr-c225 ii",
+      "precio": 2500
+    },
+    {
+      "nombre": "epson perfection v39",
+      "precio": 600
+    },
+    {
+      "nombre": "fujitsu fi-7160",
+      "precio": 3500
+    }
+  ],
+  "fuentes de poder": [
+    {
+      "nombre": "evga 600 w1, 80+ white 600w",
+      "precio": 500
+    },
+    {
+      "nombre": "corsair cx series 750 watt, 80+ bronze",
+      "precio": 800
+    },
+    {
+      "nombre": "seasonic focus plus 650 gold",
+      "precio": 1000
+    },
+    {
+      "nombre": "thermaltake smart 500w 80+ white",
+      "precio": 600
+    },
+    {
+      "nombre": "cooler master mwe gold 650 v2",
+      "precio": 900
+    },
+    {
+      "nombre": "evga supernova 750 g5, 80 plus gold",
+      "precio": 1200
+    },
+    {
+      "nombre": "be quiet! straight power 11 platinum 750w",
+      "precio": 1500
+    },
+    {
+      "nombre": "corsair rm750x, 80+ gold",
+      "precio": 1300
+    },
+    {
+      "nombre": "silverstone technology strider platinum 550w",
+      "precio": 1100
+    },
+    {
+      "nombre": "antec earthwatts gold pro 650w",
+      "precio": 1000
+    }
+  ],
+  "gabinetes de computadora": [
+    {
+      "nombre": "nzxt h510",
+      "precio": 900
+    },
+    {
+      "nombre": "cooler master masterbox q300l",
+      "precio": 700
+    },
+    {
+      "nombre": "fractal design meshify c",
+      "precio": 1000
+    },
+    {
+      "nombre": "phanteks eclipse p300",
+      "precio": 800
+    },
+    {
+      "nombre": "corsair carbide 275r",
+      "precio": 950
+    },
+    {
+      "nombre": "lian li pc-o11 dynamic",
+      "precio": 1500
+    },
+    {
+      "nombre": "nzxt h710i",
+      "precio": 1200
+    },
+    {
+      "nombre": "phanteks enthoo pro",
+      "precio": 1100
+    },
+    {
+      "nombre": "thermaltake view 71 tg",
+      "precio": 1400
+    }
+  ],
+  "impresoras": [
+    {
+      "nombre": "epson ecotank et-2720",
+      "precio": 1000
+    },
+    {
+      "nombre": "canon pixma tr8520",
+      "precio": 1500
+    },
+    {
+      "nombre": "hp officejet pro 9015",
+      "precio": 1300
+    },
+    {
+      "nombre": "brother hl-l2390dw",
+      "precio": 800
+    },
+    {
+      "nombre": "epson workforce pro wf-3720",
+      "precio": 1200
+    },
+    {
+      "nombre": "canon imageclass mf269dw",
+      "precio": 1800
+    },
+    {
+      "nombre": "hp laserjet pro m15w",
+      "precio": 600
+    },
+    {
+      "nombre": "brother dcp-l2550dw",
+      "precio": 1100
+    },
+    {
+      "nombre": "epson surecolor p600",
+      "precio": 3000
+    },
+    {
+      "nombre": "canon pixma ts9520",
+      "precio": 2000
+    }
+  ],
+  "laptops": [
+    {
+      "nombre": "dell xps 13",
+      "precio": 8000
+    },
+    {
+      "nombre": "macbook air",
+      "precio": 9000
+    },
+    {
+      "nombre": "hp spectre x360",
+      "precio": 7500
+    },
+    {
+      "nombre": "lenovo thinkpad x1 carbon",
+      "precio": 8500
+    },
+    {
+      "nombre": "asus zenbook 14",
+      "precio": 6500
+    },
+    {
+      "nombre": "acer swift 3",
+      "precio": 5500
+    },
+    {
+      "nombre": "msi gs66 stealth",
+      "precio": 11000
+    },
+    {
+      "nombre": "razer blade 15",
+      "precio": 10000
+    },
+    {
+      "nombre": "microsoft surface laptop 4",
+      "precio": 8500
+    },
+    {
+      "nombre": "lenovo ideapad 5",
+      "precio": 5000
+    }
+  ],
+  "memorias ram": [
+    {
+      "nombre": "corsair vengeance lpx 16gb (2x8gb)",
+      "precio": 800
+    },
+    {
+      "nombre": "crucial ballistix rgb 16gb (2x8gb)",
+      "precio": 1000
+    },
+    {
+      "nombre": "g.skill trident z rgb 16gb (2x8gb)",
+      "precio": 1200
+    },
+    {
+      "nombre": "hyperx fury rgb 16gb (2x8gb)",
+      "precio": 900
+    },
+    {
+      "nombre": "adata xpg spectrix d60g 16gb (2x8gb)",
+      "precio": 1100
+    },
+    {
+      "nombre": "team group t-force delta rgb 16gb (2x8gb)",
+      "precio": 950
+    },
+    {
+      "nombre": "patriot viper steel series 16gb (2x8gb)",
+      "precio": 850
+    },
+    {
+      "nombre": "kingston hyperx predator rgb 16gb (2x8gb)",
+      "precio": 1300
+    },
+    {
+      "nombre": "crucial ballistix max 16gb (2x8gb)",
+      "precio": 1400
+    },
+    {
+      "nombre": "corsair dominator platinum rgb 16gb (2x8gb)",
+      "precio": 1600
+    }
+  ],
+  "monitores": [
+    {
+      "nombre": "dell ultrasharp u2720q",
+      "precio": 4000
+    },
+    {
+      "nombre": "lg 27uk850-w",
+      "precio": 4500
+    },
+    {
+      "nombre": "asus tuf gaming vg27aql1a",
+      "precio": 3500
+    },
+    {
+      "nombre": "samsung odyssey g7",
+      "precio": 5500
+    },
+    {
+      "nombre": "acer predator x27",
+      "precio": 6000
+    },
+    {
+      "nombre": "viewsonic elite xg270qg",
+      "precio": 5500
+    },
+    {
+      "nombre": "benq pd3200u",
+      "precio": 4000
+    },
+    {
+      "nombre": "hp z27",
+      "precio": 3800
+    },
+    {
+      "nombre": "msi optix mag272cqr",
+      "precio": 3000
+    },
+    {
+      "nombre": "lg 34gn850-b",
+      "precio": 5000
+    }
+  ],
+  "multifuncionales": [
+    {
+      "nombre": "hp officejet pro 6978",
+      "precio": 1500
+    },
+    {
+      "nombre": "canon pixma tr4520",
+      "precio": 800
+    },
+    {
+      "nombre": "epson ecotank et-4760",
+      "precio": 1800
+    },
+    {
+      "nombre": "brother mfc-l2710dw",
+      "precio": 1000
+    },
+    {
+      "nombre": "hp envy photo 7155",
+      "precio": 1200
+    },
+    {
+      "nombre": "canon imageclass mf634cdw",
+      "precio": 2000
+    },
+    {
+      "nombre": "epson workforce pro wf-4740",
+      "precio": 2500
+    },
+    {
+      "nombre": "brother mfc-j995dw",
+      "precio": 1700
+    },
+    {
+      "nombre": "hp deskjet 3755",
+      "precio": 600
+    },
+    {
+      "nombre": "epson expression premium xp-6100",
+      "precio": 900
+    }
+  ],
+  "procesadores": [
+    {
+      "nombre": "intel core i9-10900k",
+      "precio": 4000
+    },
+    {
+      "nombre": "amd ryzen 9 5950x",
+      "precio": 4500
+    },
+    {
+      "nombre": "intel core i7-11700k",
+      "precio": 3500
+    },
+    {
+      "nombre": "amd ryzen 7 5800x",
+      "precio": 3000
+    },
+    {
+      "nombre": "intel core i5-11600k",
+      "precio": 2500
+    },
+    {
+      "nombre": "amd ryzen 5 5600x",
+      "precio": 2000
+    },
+    {
+      "nombre": "intel core i3-10100",
+      "precio": 1500
+    },
+    {
+      "nombre": "amd ryzen 3 3300x",
+      "precio": 1000
+    },
+    {
+      "nombre": "intel core i9-11900k",
+      "precio": 5000
+    },
+    {
+      "nombre": "amd ryzen 9 5900x",
+      "precio": 4200
+    }
+  ],
+  "ratones": [
+    {
+      "nombre": "logitech mx master 3",
+      "precio": 800
+    },
+    {
+      "nombre": "razer deathadder v2",
+      "precio": 700
+    },
+    {
+      "nombre": "steelseries rival 600",
+      "precio": 900
+    },
+    {
+      "nombre": "corsair dark core rgb pro",
+      "precio": 1000
+    },
+    {
+      "nombre": "microsoft surface precision mouse",
+      "precio": 1200
+    },
+    {
+      "nombre": "logitech g502 hero",
+      "precio": 850
+    },
+    {
+      "nombre": "razer basilisk v2",
+      "precio": 950
+    },
+    {
+      "nombre": "steelseries sensei ten",
+      "precio": 800
+    },
+    {
+      "nombre": "corsair harpoon rgb wireless",
+      "precio": 600
+    },
+    {
+      "nombre": "logitech g pro wireless",
+      "precio": 1500
+    }
+  ],
+  "tarjetas de video": [
+    {
+      "nombre": "nvidia geforce rtx 3080",
+      "precio": 12000
+    },
+    {
+      "nombre": "amd radeon rx 6900 xt",
+      "precio": 11000
+    },
+    {
+      "nombre": "nvidia geforce rtx 3070",
+      "precio": 8000
+    },
+    {
+      "nombre": "amd radeon rx 6800 xt",
+      "precio": 9000
+    },
+    {
+      "nombre": "nvidia geforce rtx 3060 ti",
+      "precio": 6000
+    },
+    {
+      "nombre": "amd radeon rx 6700 xt",
+      "precio": 7000
+    },
+    {
+      "nombre": "nvidia geforce gtx 1660 super",
+      "precio": 3000
+    },
+    {
+      "nombre": "amd radeon rx 6600 xt",
+      "precio": 4500
+    },
+    {
+      "nombre": "nvidia geforce rtx 3090",
+      "precio": 18000
+    },
+    {
+      "nombre": "amd radeon rx 6800",
+      "precio": 8000
+    }
+  ],
+  "tarjetas madre": [
+    {
+      "nombre": "asus rog strix z590-e gaming",
+      "precio": 4000
+    },
+    {
+      "nombre": "msi mpg z490 gaming carbon wifi",
+      "precio": 3500
+    },
+    {
+      "nombre": "gigabyte b550 aorus pro ac",
+      "precio": 3000
+    },
+    {
+      "nombre": "asrock b450m steel legend",
+      "precio": 2500
+    },
+    {
+      "nombre": "asus tuf gaming x570-plus",
+      "precio": 4000
+    },
+    {
+      "nombre": "msi mag b550 tomahawk",
+      "precio": 3500
+    },
+    {
+      "nombre": "gigabyte x570 aorus elite",
+      "precio": 3000
+    },
+    {
+      "nombre": "asrock x570 phantom gaming 4",
+      "precio": 2500
+    },
+    {
+      "nombre": "asus prime b450-plus",
+      "precio": 2000
+    },
+    {
+      "nombre": "msi b450 tomahawk max",
+      "precio": 2200
+    }
+  ],
+  "teclados": [
+    {
+      "nombre": "razer huntsman elite",
+      "precio": 1500
+    },
+    {
+      "nombre": "logitech g915",
+      "precio": 2000
+    },
+    {
+      "nombre": "corsair k70 rgb",
+      "precio": 1800
+    },
+    {
+      "nombre": "steelseries apex pro",
+      "precio": 2200
+    },
+    {
+      "nombre": "ducky one 2 mini",
+      "precio": 1200
+    },
+    {
+      "nombre": "hyperx alloy origins",
+      "precio": 1300
+    },
+    {
+      "nombre": "asus rog strix scope",
+      "precio": 1700
+    },
+    {
+      "nombre": "cooler master ck550",
+      "precio": 1000
+    },
+    {
+      "nombre": "glorious gmmk",
+      "precio": 900
+    },
+    {
+      "nombre": "anne pro 2",
+      "precio": 1400
+    }
+  ]
+}
