@@ -38,6 +38,12 @@ class Dashboard(LoginRequiredMixin, ListView):
         
         values = [int(res.get('total')) for res in result]
 
+        # query 2
+        sales_details = DetalleVenta.objects.filter(sell__sell_date__year=curr_year)
+        sales_by_region = sales_details.values('sell__region__name').annotate(total_sales=Sum(F('qty') * F('price')))
+
+        # sells per region
+        context['sells_reg'] = sales_by_region
         # current month sales
         context['m_totals'] = values[datetime.now().month-1]
         # total $ per year

@@ -83,17 +83,17 @@
       <table class="table table-bordered">
         <thead class="table-dark">
           <tr>
-            <th scope="col">Id</th>
             <th scope="col">Region</th>
             <th scope="col">Ventas</th>
           </tr>
         </thead>
         <tbody>
+          {% for sell in sells_reg %}
           <tr>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
+            <td>{{sell.sell__region__name}}</td>
+            <td>{{sell.total_sales}}</td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
 
