@@ -12,9 +12,15 @@
     <!-- scripts -->
     {% block scripts %}
     {% endblock %}
+
+    <!-- css -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
   </head>
   <body>
-    {% block content %}
-    {% endblock %}
+    <div class="layout bg-light">
+      {% block content %}
+      {% endblock %}
+    </div>
   </body>
 </html>

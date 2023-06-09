@@ -1,0 +1,30 @@
+{% extends "menu.html" %}
+
+{% block container %}
+
+
+<div class="container">
+  <h1 class="fw-bold">Reporte de ventas</h1>
+  <hr class="mb-5"/>
+
+  <form class="" method="post">
+    {% csrf_token %}
+    <div class="d-flex flex-row gap-3">
+      <div class="w-25">
+        <label class="form-label">Fecha de inicio</label>
+        <input class="form-control" type="date">
+      </div>
+      <div class="w-25">
+        <label class="form-label">Fecha final</label>
+        <input class="form-control" type="date">
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <button class="btn btn-primary" type="submit">Generar reporte</button>
+    </div>
+  </form>
+
+</div>
+
+{% endblock container %}

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "menu.html" %}
 
 {% block scripts %}
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -6,212 +6,188 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 {% endblock scripts %}
 
-{% block content %}
-<main class="bg-light">
-  <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="">Dashboard</a>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'admin:index' %}">Ajustes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'authenticate:logout' %}">Cerrar sesión</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+{% block container %}
+<div class="container">
+  <h1 class="fw-bold">Bienvenido {{ user.get_username }}</h1>
+  <hr class="mb-5"/>
 
-  <!-- content -->
-  <div class="container mt-4">
-    <h1 class="fw-bold">Bienvenido {{ user.get_username }}</h1>
-    <hr class="mb-5"/>
-
-    <!-- tarjeta de resumen de ventas -->
-    <div class='d-flex row justify-content-between mb-5'>
-      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-header fst-italic">Resumen de ventas</div>
-        <div class="card-body">
-          <p class="card-text">Mes actual: Q.{{ m_totals }}</p>
-          <p class="card-text ">Año actual: Q.{{y_totals}}</p>
-        </div>
-      </div>
-
-      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header fst-italic">Regiones</div>
-        <div class="card-body">
-          <p class="card-text">Numero de regiones: <strong>{{regions}}</strong></p>
-          <p class="card-text ">Region actual: <strong class='text-uppercase'>{{ user.region }}</strong></p>
-        </div>
-      </div>    
-
-      <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header fst-italic">Resumen de stock</div>
-        <div class="card-body">
-          <p class="card-text">Productos registrados: <strong> {{ prod_count }}</strong> </p>
-          <p class="card-text">Categorias registradas: <strong> {{ cat_count }}</strong> </p>
-        </div>
-      </div>
-
-      <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
-        <div class="card-header fst-italic">Estado de ventas</div>
-        <div class="card-body">
-          <p class="card-text">Ventas realizadas: <strong> {{ sell_states.True }}</strong> </p>
-          <p class="card-text">Ventas pendientes: <strong> {{ sell_states.False }}</strong> </p>
-        </div>
+  <!-- tarjeta de resumen de ventas -->
+  <div class='d-flex row justify-content-between mb-5'>
+    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+      <div class="card-header fst-italic"> Resumen de ventas</div>
+      <div class="card-body">
+        <p class="card-text">Mes actual: Q.{{ m_totals }}</p>
+        <p class="card-text ">Año actual: Q.{{y_totals}}</p>
       </div>
     </div>
 
-    <!-- grafica de barras -->
-    <div class="container-fluid mt-4 bg-white rounded-3 shadow-sm">
-      <div class='row'>
-        <div id='bar_chart'>
-        </div>
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+      <div class="card-header fst-italic"> Regiones</div>
+      <div class="card-body">
+        <p class="card-text">Numero de regiones: <strong>{{regions}}</strong></p>
+        <p class="card-text ">Region actual: <strong class='text-uppercase'>{{ user.region }}</strong></p>
+      </div>
+    </div>    
+
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header fst-italic"> Resumen de stock</div>
+      <div class="card-body">
+        <p class="card-text">Productos registrados: <strong> {{ prod_count }}</strong> </p>
+        <p class="card-text">Categorias registradas: <strong> {{ cat_count }}</strong> </p>
       </div>
     </div>
 
-    <!-- tablas -->
-    <div class="mt-5 d-flex justify-content-between gap-5 flex-column flex-md-row">
-      <table class="table table-bordered shadow-sm caption-top">
-        <caption>VENTAS POR REGION</caption>
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Region</th>
-            <th scope="col">Ventas</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for sell in sells_reg %}
-          <tr>
-            <td class="text-uppercase">{{sell.sell__region__name}}</td>
-            <td>Q. {{sell.total_sales}}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-
-      <table class="table table-bordered h-100 shadow-sm caption-top">
-        <caption>PRODUCTOS MAS VENDIDOS</caption>
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Producto</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for prod in prod_sells %}
-          <tr>
-            <td class='text-uppercase'>{{ prod.name }}</td>
-            <td>{{ prod.total_vendido }}</td>
-            <td>Q.{{ prod.total_venta }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-    <!-- categorias -->
-    <div class="container-fluid mt-4 bg-white rounded-3 shadow-sm">
-      <div class='row'>
-        <div id='pie_chart'>
-        </div>
+    <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
+      <div class="card-header fst-italic"> Estado de ventas</div>
+      <div class="card-body">
+        <p class="card-text">Ventas realizadas: <strong> {{ sell_states.True }}</strong> </p>
+        <p class="card-text">Ventas pendientes: <strong> {{ sell_states.False }}</strong> </p>
       </div>
     </div>
-
   </div>
 
-  <script type="application/javascript">
-    Highcharts.chart('pie_chart', {
-      chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-      },
+  <!-- grafica de barras -->
+  <div class="container-fluid mt-4 bg-white rounded-3 shadow-sm">
+    <div class='row'>
+      <div id='bar_chart'>
+      </div>
+    </div>
+  </div>
+
+  <!-- tablas -->
+  <div class="mt-5 d-flex justify-content-between gap-5 flex-column flex-md-row">
+    <table class="table table-bordered shadow-sm caption-top">
+      <caption>VENTAS POR REGION</caption>
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Region</th>
+          <th scope="col">Ventas</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sell in sells_reg %}
+        <tr>
+          <td class="text-uppercase">{{sell.sell__region__name}}</td>
+          <td>Q. {{sell.total_sales}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <table class="table table-bordered h-100 shadow-sm caption-top">
+      <caption>PRODUCTOS MAS VENDIDOS</caption>
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Producto</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for prod in prod_sells %}
+        <tr>
+          <td class='text-uppercase'>{{ prod.name }}</td>
+          <td>{{ prod.total_vendido }}</td>
+          <td>Q.{{ prod.total_venta }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- categorias -->
+  <div class="container-fluid mt-4 bg-white rounded-3 shadow-sm">
+    <div class='row'>
+      <div id='pie_chart'>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="application/javascript">
+  Highcharts.chart('pie_chart', {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
+    },
+    title: {
+      text: 'Ventas por categoria',
+      align: 'left'
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+      point: {
+        valueSuffix: '%'
+      }
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+        }
+      }
+    },
+    series: [{
+      name: 'Catgorias',
+      colorByPoint: true,
+      data: {{ sells_cat|safe }}
+    }]
+  });
+</script>
+
+<script type="application/javascript">
+  const monthNames = Array.from({ length: 12 }, (_, month) => {
+    const date = new Date(2000, month);
+    return date.toLocaleString('es-ES', { month: 'short' });
+  });
+
+  Highcharts.chart('bar_chart', {
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: 'Resumen de ventas'
+    },
+    xAxis: {
+      categories: monthNames,
+      crosshair: true
+    },
+    yAxis: {
+      min: 0,
       title: {
-        text: 'Ventas por categoria',
-        align: 'left'
-      },
-      tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-      },
-      accessibility: {
-        point: {
-          valueSuffix: '%'
-        }
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: true,
-            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-          }
-        }
-      },
-      series: [{
-        name: 'Catgorias',
+        text: 'Quetzales'
+      }
+    },
+    tooltip: {
+      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+      '<td style="padding:0"> <b>Q.{point.y:.1f}</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
+      }
+    },
+    series: [
+      {
+        name: 'Ventas',
+        showInLegend: false,
         colorByPoint: true,
-        data: {{ sells_cat|safe }}
-      }]
-    });
-  </script>
-
-  <script type="application/javascript">
-    const monthNames = Array.from({ length: 12 }, (_, month) => {
-      const date = new Date(2000, month);
-      return date.toLocaleString('es-ES', { month: 'short' });
-    });
-
-    Highcharts.chart('bar_chart', {
-      chart: {
-        type: 'column'
-      },
-      title: {
-        text: 'Resumen de ventas'
-      },
-      xAxis: {
-        categories: monthNames,
-        crosshair: true
-      },
-      yAxis: {
-        min: 0,
-        title: {
-          text: 'Quetzales'
-        }
-      },
-      tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-        '<td style="padding:0"> <b>Q.{point.y:.1f}</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-      },
-      plotOptions: {
-        column: {
-          pointPadding: 0.2,
-          borderWidth: 0
-        }
-      },
-      series: [
-        {
-          name: 'Ventas',
-          showInLegend: false,
-          colorByPoint: true,
-          data: {{ sells_month|safe }}
-        }
-      ]
-    });
-  </script>
-</main>
-
-{% endblock %}
+        data: {{ sells_month|safe }}
+      }
+    ]
+  });
+</script>
+{% endblock container %}

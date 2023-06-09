@@ -8,6 +8,13 @@ from django.views.generic import ListView
 
 from dashboard.models import Categoria, DetalleVenta, Producto, Region, Venta
 
+class Reports(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('authenticate:login')
+    template_name = 'reports.html'
+    context_object_name = 'ventas'
+    model = Venta
+
+
 # Create your views here.
 class Dashboard(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('authenticate:login')
