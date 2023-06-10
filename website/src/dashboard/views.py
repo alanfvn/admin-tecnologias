@@ -1,18 +1,55 @@
 from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum,F,Count
-from django.db.models.functions import ExtractMonth
+from django.db.models.functions import ExtractMonth, TruncDate
 from django.urls import reverse_lazy
 from django.utils import timezone
-from django.views.generic import ListView
+from django.views.generic import FormView, ListView
+from dashboard.forms import ReportForm
 
 from dashboard.models import Categoria, DetalleVenta, Producto, Region, Venta
 
-class Reports(LoginRequiredMixin, ListView):
+class Reports(LoginRequiredMixin, FormView):
     login_url = reverse_lazy('authenticate:login')
+    success_url = reverse_lazy('dashboard:reports')
     template_name = 'reports.html'
-    context_object_name = 'ventas'
-    model = Venta
+    form_class = ReportForm
+
+    def sales_by_range(self, start, end):
+        ventas_dia = (DetalleVenta.objects
+            .filter(sell__sell_date__range=(start, end))
+            .annotate(day=TruncDate('sell__sell_date'))
+            .values('day')
+            .annotate(total_ventas=Sum(F('qty') * F('price')))
+            .order_by('day')
+        )
+
+        x_labels = []
+        y_labels = []
+
+        for venta in ventas_dia:
+            x_labels.append(venta['day'].strftime('%Y-%m-%d'))
+            y_labels.append(int(venta['total_ventas']))
+
+        return {"dates":x_labels, "totals": y_labels}
+
+    def form_valid(self, form):
+        form_dates = form.cleaned_data
+        sdate = form_dates['start_date']
+        edate = form_dates['end_date']
+
+        if sdate > edate:
+            return self.form_invalid(form)
+
+        sales = self.sales_by_range(sdate, edate)
+
+        contexto = self.get_context_data(form=form, datos_formulario=sales)
+        return self.render_to_response(contexto)
+
+    def form_invalid(self, form):
+        errors = form.errors.as_data()
+        form.add_error('end_date', 'La fecha no puede ser mas grande!')
+        return self.render_to_response(self.get_context_data(form=form, errors=errors))
 
 
 # Create your views here.
