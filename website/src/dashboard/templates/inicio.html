@@ -9,6 +9,7 @@
 {% block container %}
 <div class="container">
   <h1 class="fw-bold">Bienvenid@ {{ user.get_username }}</h1>
+  <h3 class="fst-italic">{{group}}</h3>
   <hr class="mb-5"/>
 
   <!-- tarjeta de resumen de ventas -->
@@ -25,7 +26,7 @@
       <div class="card-header fst-italic"> Regiones</div>
       <div class="card-body">
         <p class="card-text">Numero de regiones: <strong>{{overview.regions}}</strong></p>
-        <p class="card-text ">Region actual: <strong class='text-uppercase'>{{ user.region }}</strong></p>
+        <p class="card-text ">Region actual: <strong class='text-uppercase'>{{ region }}</strong></p>
       </div>
     </div>    
 

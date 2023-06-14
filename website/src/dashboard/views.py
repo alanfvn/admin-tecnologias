@@ -14,7 +14,20 @@ class Reports(LoginRequiredMixin, FormView):
     template_name = 'reports.html'
     form_class = ReportForm
 
+    def get_filter_region(self):
+        user = self.request.user
+        region = user.region
+        if user.groups.filter(name="Director general").exists():
+            return None
+        return region
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['region'] = self.get_filter_region() or 'Todas las regiones'
+        return initial
+
     def sales_by_range(self, start, end):
+        reg = self.get_filter_region()
         ventas_dia = (DetalleVenta.objects
             .filter(sell__sell_date__range=(start, end))
             .annotate(day=TruncDate('sell__sell_date'))
@@ -22,6 +35,9 @@ class Reports(LoginRequiredMixin, FormView):
             .annotate(total_ventas=Sum(F('qty') * F('price')))
             .order_by('day')
         )
+
+        if reg:
+            ventas_dia = ventas_dia.filter(sell__region=reg)
 
         x_labels = []
         y_labels = []
@@ -61,7 +77,6 @@ class Dashboard(LoginRequiredMixin, TemplateView):
         region = user.region
         if user.groups.filter(name="Director general").exists():
             return None
-
         return region
 
 
@@ -169,6 +184,13 @@ class Dashboard(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        group = self.request.user.groups.all()
+        if group:
+            group = group[0]
+
         context['overview'] = self.get_overview()
         context['sales'] = self.get_sales_overview()
+        context['region'] = self.get_filter_region() or "N/A"
+        context['group'] = group
+
         return context
