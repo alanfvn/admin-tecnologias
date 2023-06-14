@@ -16,15 +16,15 @@
     <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
       <div class="card-header fst-italic"> Resumen de ventas</div>
       <div class="card-body">
-        <p class="card-text">Mes actual: Q.{{ m_totals }}</p>
-        <p class="card-text ">Año actual: Q.{{y_totals}}</p>
+        <p class="card-text">Mes actual: Q.{{ sales.total_current_month }}</p>
+        <p class="card-text ">Año actual: Q.{{ sales.total_current_year }}</p>
       </div>
     </div>
 
     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
       <div class="card-header fst-italic"> Regiones</div>
       <div class="card-body">
-        <p class="card-text">Numero de regiones: <strong>{{regions}}</strong></p>
+        <p class="card-text">Numero de regiones: <strong>{{overview.regions}}</strong></p>
         <p class="card-text ">Region actual: <strong class='text-uppercase'>{{ user.region }}</strong></p>
       </div>
     </div>    
@@ -32,16 +32,16 @@
     <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header fst-italic"> Resumen de stock</div>
       <div class="card-body">
-        <p class="card-text">Productos registrados: <strong> {{ prod_count }}</strong> </p>
-        <p class="card-text">Categorias registradas: <strong> {{ cat_count }}</strong> </p>
+        <p class="card-text">Productos registrados: <strong> {{ overview.products }}</strong> </p>
+        <p class="card-text">Categorias registradas: <strong> {{ overview.categories }}</strong> </p>
       </div>
     </div>
 
     <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
       <div class="card-header fst-italic"> Estado de ventas</div>
       <div class="card-body">
-        <p class="card-text">Ventas realizadas: <strong> {{ sell_states.True }}</strong> </p>
-        <p class="card-text">Ventas pendientes: <strong> {{ sell_states.False }}</strong> </p>
+        <p class="card-text">Ventas realizadas: <strong> {{ overview.sale_states.True }}</strong> </p>
+        <p class="card-text">Ventas pendientes: <strong> {{ overview.sale_states.False }}</strong> </p>
       </div>
     </div>
   </div>
@@ -56,6 +56,9 @@
 
   <!-- tablas -->
   <div class="mt-5 d-flex justify-content-between gap-5 flex-column flex-md-row">
+
+    {% if sales.total_by_region %}
+
     <table class="table table-bordered shadow-sm caption-top">
       <caption>VENTAS POR REGION</caption>
       <thead class="table-dark">
@@ -65,7 +68,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for sell in sells_reg %}
+        {% for sell in sales.total_by_region %}
         <tr>
           <td class="text-uppercase">{{sell.sell__region__name}}</td>
           <td>Q. {{sell.total_sales}}</td>
@@ -73,6 +76,9 @@
         {% endfor %}
       </tbody>
     </table>
+    
+    {% endif %}
+
 
     <table class="table table-bordered h-100 shadow-sm caption-top">
       <caption>PRODUCTOS MAS VENDIDOS</caption>
@@ -84,7 +90,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for prod in prod_sells %}
+        {% for prod in sales.top_products %}
         <tr>
           <td class='text-uppercase'>{{ prod.name }}</td>
           <td>{{ prod.total_vendido }}</td>
@@ -138,7 +144,7 @@
     series: [{
       name: 'Catgorias',
       colorByPoint: true,
-      data: {{ sells_cat|safe }}
+      data: {{ sales.total_by_categories|safe }}
     }]
   });
 </script>
@@ -185,7 +191,7 @@
         name: 'Ventas',
         showInLegend: false,
         colorByPoint: true,
-        data: {{ sells_month|safe }}
+        data: {{ sales.total_each_month|safe }}
       }
     ]
   });

@@ -19,76 +19,59 @@ with open(os.path.join(os.path.dirname(__file__), './fake_data/sell_details.json
     details = json.load(f)
 
 
-def create_regions(force_create):
-    if force_create:
-        Region.objects.bulk_create([Region(name=reg) for reg in regs])
-    return Region.objects.all()
+def create_regions():
+    Region.objects.bulk_create([Region(name=reg) for reg in regs])
 
-def create_categories(force_create):
-    if force_create:
-        Categoria.objects.bulk_create([Categoria(name=cat) for cat in cats])
-    return Categoria.objects.all() 
+def create_categories():
+    Categoria.objects.bulk_create([Categoria(name=cat) for cat in cats])
 
-def create_products(force_create):
-    if force_create:
-        to_create = []
-
-        for cat, product in prods.items():
-            cag = Categoria.objects.get(name=cat) 
-            for prod in product:
-                nm = prod['nombre']
-                prc = prod['precio']
-                to_create.append(Producto(
-                    name=nm,
-                    category=cag,
-                    price=prc
-                ))
-        Producto.objects.bulk_create(to_create)
-    return Producto.objects.all()
-
-def create_sells(force_create):
-    if force_create:
-        to_create = []
-        for sell in sells:
-            reg = Region.objects.get(name=sell['region'])
-            to_create.append(Venta(
-                sell_date=sell['fecha_venta'],
-                region=reg,
-                sell_state=sell['estado']
+def create_products():
+    to_create = []
+    for cat, product in prods.items():
+        cag = Categoria.objects.get(name=cat) 
+        for prod in product:
+            nm = prod['nombre']
+            prc = prod['precio']
+            to_create.append(Producto(
+                name=nm,
+                category=cag,
+                price=prc
             ))
-        Venta.objects.bulk_create(to_create)
-    return Venta.objects.all()
+    Producto.objects.bulk_create(to_create)
 
-def create_sell_details(force_create):
-    if force_create:
-        to_create = []
-        for sellid, items in details.items():
+def create_sells():
+    to_create = []
+    for sell in sells:
+        reg = Region.objects.get(name=sell['region'])
+        to_create.append(Venta(
+            sell_date=sell['fecha_venta'],
+            region=reg,
+            sell_state=sell['estado']
+        ))
+    Venta.objects.bulk_create(to_create)
 
-            sid = int(sellid)
-            sll = Venta.objects.get(id=sid)
+def create_sell_details():
+    to_create = []
+    for sellid, items in details.items():
 
-            for item in items:
-                prod = Producto.objects.get(name=item['prod'])
-                to_create.append(DetalleVenta(
-                    sell=sll,
-                    product=prod,
-                    qty=item['qty'],
-                    price=item['price']
-                ))
-        DetalleVenta.objects.bulk_create(to_create)
+        sid = int(sellid)
+        sll = Venta.objects.get(id=sid)
 
-    return DetalleVenta.objects.all()
+        for item in items:
+            prod = Producto.objects.get(name=item['prod'])
+            to_create.append(DetalleVenta(
+                sell=sll,
+                product=prod,
+                qty=item['qty'],
+                price=item['price']
+            ))
+    DetalleVenta.objects.bulk_create(to_create)
+
 
 
 # create
-categories = create_categories(False)
-products = create_products(False)
-regions = create_regions(False)
-all_sells = create_sells(False)
-sell_details = create_sell_details(False)
-
-print(f'categories: {len(categories)}')
-print(f'products: {len(products)}')
-print(f'regions: {len(regions)}')
-print(f'sells: {len(sells)}')
-print(f'details: {len(sell_details)}')
+create_categories()
+create_products()
+create_regions()
+create_sells()
+create_sell_details()
