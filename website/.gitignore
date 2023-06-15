@@ -2,4 +2,3 @@
 *.pyc
 env/
 .env
-/src/db.sqlite3

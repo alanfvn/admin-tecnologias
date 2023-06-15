@@ -21,3 +21,14 @@ pip install -r req.txt
 # ejecuta el servidor
 py ./src/manage.py runserver
 ```
+
+## Mediante Docker
+
+```bash
+# construir la build
+cd admin-tecnologias/website/
+docker build -t admin_tec .
+
+# ejecutar la build
+docker run -d -p 80:8000 admin_tec
+```
